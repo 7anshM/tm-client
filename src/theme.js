@@ -7,7 +7,7 @@ export const theme: Theme = {
           height:'100vh',
           width:'100vw',
           overflow:'none',
-          background:'#0F0E0E'
+          // background:'#0F0E0E'
       },
       floating:{
           position:'absolute',
@@ -22,6 +22,11 @@ export const theme: Theme = {
           boxShadow:' 0 4px 30px rgba(0, 0, 0, 0.1)',
           backdropFilter: 'blur(4px)',
           border:' 1px solid rgba(209, 205, 205,0.05)',
+      },
+      margin:{
+          height:'20px',
+          width:'100%',
+          background:'transparent',
       }
     },
 }

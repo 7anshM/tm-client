@@ -1,9 +1,26 @@
 /** @jsxImportSource theme-ui */
 
 
-import {Input} from "theme-ui";
+import {Button, Input} from "theme-ui";
+import {useState} from "react";
+import Contracts from "../../Services/server_contract";
 
 function Login(){
+    const [usernameVal,setUsernameVal]=useState('');
+    const [passwordVal,setPasswordVal]=useState('');
+
+    function setusernameFunc(e) {
+        setUsernameVal(e.target.value);
+    }
+
+    function setPasswordFunc(e) {
+        setPasswordVal(e.target.value);
+    }
+
+    function login() {
+        Contracts.userLogin(usernameVal,passwordVal);
+    }
+
     return (
         <div sx={{
             variant:'containers.page'
@@ -18,8 +35,11 @@ function Login(){
                 }}>
                     Login
                 </h1>
-                <Input sx={{margin:'0px 20px 0 20px'}} color={'primary'} autoComplete="given-name" autofillBackgroundColor="highlight" />
-                <Input autoComplete="given-name" autofillBackgroundColor="highlight" />
+                <Input color={'primary'} autoComplete="given-name" value={usernameVal} onChange={setusernameFunc} autofillBackgroundColor="highlight" />
+                <div sx={{variant:'containers.margin'}}/>
+                <Input color={'primary'} autoComplete="given-name"  value={passwordVal} onChange={setPasswordFunc} autofillBackgroundColor="highlight" />
+                <div sx={{variant:'containers.margin'}}/>
+                <Button onClick={login}>Login</Button>
             </div>
         </div>
     );
